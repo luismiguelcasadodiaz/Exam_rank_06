@@ -91,21 +91,28 @@ int	main( int ac , char **av )
 	int					sockfd;
 	int					connfd;
 	struct sockaddr_in	servaddr;
+	bzero(&servaddr, sizeof(servaddr));
 	if ( ac != 2)
+	{
 		err("Wrong number of arguments\n", 1);
-
+	}
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1)
+	{
 		err(NULL, 1);
+	}
 	max_fd=sockfd;
-	bzero(&servaddr, sizeof(servaddr));
+
 	bzero(clients, sizeof(clients));
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(2130706433);
 	servaddr.sin_port = htons(atoi(av[1]));
 	if ((bind(sockfd,
-				(const struct sockaddr *)&servaddr,
+					(const struct sockaddr *)&servaddr,
 				sizeof(servaddr))) != 0)
+	{
+		err(NULL, 1);
+	}
 	if (listen(sockfd, 10) != 0)
 		err(NULL, 1);
 	FD_ZERO(&active_set);

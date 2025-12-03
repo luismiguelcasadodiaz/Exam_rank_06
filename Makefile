@@ -1,7 +1,7 @@
 all: main
 
 main: try2.c
-	cc -Werror -Wextra -Wall try2.c -o $@
+	cc -g -Werror -Wextra -Wall try2.c -o $@
 
 clean: 
 	rm main
