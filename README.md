@@ -2,7 +2,7 @@
 Write a program that will listen for client to connect on a certain port on 127.0.0.1 and will let clients to speak with each other
 
 
-``m̀ermaid
+``` mermaid
 flowchart TD
     A[Socket<br>bind<br>listen] -->|max_fd = sockfd| B[FD_ZERO &actve_set<br>FD_SET sockfd &active_set<br>bzero clients]
     B --> C{while True} 
